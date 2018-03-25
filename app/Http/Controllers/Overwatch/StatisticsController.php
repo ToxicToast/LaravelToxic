@@ -20,7 +20,7 @@ class StatisticsController extends Controller {
 			$array['total'] += $stat['total'];
 			$array['wins'] += $stat['wins'];
 			$array['loses'] += $stat['loses'];
-			$array['draws'] += $stat['draws'];
+			$array['draws'] += $stat['ties'];
 		}
 		return $array;
 	}
