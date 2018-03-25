@@ -38,11 +38,9 @@ class FetchOverwatchProfiles implements ShouldQueue
      */
     public function handle()
     {
-        $dataArray = [];
-        //
         $data = $this->getApiData();
         $this->savePlayerOldRanking();
-        $this->savePlayerRanking($data['stats']['competitive']['overall_stats']);
+        $this->savePlayerRanking($data['stats']['competitive']['overall_stats'], $data['stats']['competitive']['game_stats']);
         $this->deletePlayerCharacterPlaytime();
         $this->savePlayerCharacterPlaytime($data['heroes']['playtime']['competitive']);
     }
@@ -75,18 +73,21 @@ class FetchOverwatchProfiles implements ShouldQueue
        $userId = $this->profile['userId'];
     }
 
-    private function savePlayerRanking($rankedData) {
+    private function savePlayerRanking($rankedData, $gameStats) {
         $statsArray = [
-            'player_id'         => $this->profile['userId'],
-            'player_rank'       => $rankedData['comprank'],
-            'player_level'      => $rankedData['level'],
-            'player_prestige'   => $rankedData['prestige'],
-            'player_tier'       => $rankedData['tier'],
-            'player_avatar'     => $rankedData['avatar'],
-            'total'             => $rankedData['games'],
-            'wins'              => $rankedData['wins'],
-            'loses'             => $rankedData['losses'],
-            'ties'              => $rankedData['ties']
+            'player_id'             => $this->profile['userId'],
+            'player_rank'           => $rankedData['comprank'],
+            'player_level'          => $rankedData['level'],
+            'player_prestige'       => $rankedData['prestige'],
+            'player_tier'           => $rankedData['tier'],
+            'player_avatar'         => $rankedData['avatar'],
+            'total'                 => $rankedData['games'],
+            'wins'                  => $rankedData['wins'],
+            'loses'                 => $rankedData['losses'],
+            'ties'                  => $gameStats['games_tied'],
+            'player_gold_medals'    => $gameStats['medals_gold'],
+            'player_silver_medals'  => $gameStats['medals_silver'],
+            'player_bronze_medals'  => $gameStats['medals_bronze'],
         ];
         Competitive::updateOrCreate([
             'player_id' => $this->profile['userId'],

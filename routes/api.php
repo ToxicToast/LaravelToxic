@@ -63,11 +63,12 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::prefix('overwatch')->group(function () {
-    Route::get('/tracker/medals', 'OverwatchTrackerController@getTrackerMedalsData');
+    // Route::get('/tracker/medals', 'OverwatchTrackerController@getTrackerMedalsData');
     // Route::get('/tracker/trendsold', 'OverwatchTrackerController@getTrackerTrendsData');
     //
     Route::get('/tracker/ranked', 'Overwatch\RankedController@index');
     Route::get('/tracker/statistics', 'Overwatch\StatisticsController@index');
     Route::get('/tracker/streamers', 'Overwatch\StreamersController@index');
     Route::get('/tracker/trends', 'Overwatch\TrendsController@index');
+    Route::get('/tracker/medals', 'Overwatch\MedalsController@index');
 });

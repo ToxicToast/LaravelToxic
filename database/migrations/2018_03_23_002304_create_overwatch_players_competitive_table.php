@@ -21,6 +21,9 @@ class CreateOverwatchPlayersCompetitiveTable extends Migration
             $table->unsignedInteger('player_prestige');
             $table->string('player_tier')->nullable();
             $table->string('player_avatar')->nullable();
+            $table->unsignedInteger('player_gold_medals')->default(0);
+            $table->unsignedInteger('player_silver_medals')->default(0);
+            $table->unsignedInteger('player_bronze_medals')->default(0);
             $table->unsignedInteger('total');
             $table->unsignedInteger('wins');
             $table->unsignedInteger('loses');
