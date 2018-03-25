@@ -18,7 +18,7 @@ class RankedController extends Controller {
 				$collection = new RankedCollection($model);
 				return $collection;
 			} else {
-				return $this->returnDefault(true);
+				return $this->returnDefault(false);
 			}
 	}
 
