@@ -23,7 +23,7 @@ class Competitive extends Model
         'ties',
         'player_gold_medals',
         'player_silver_medals',
-        'player_bronze_medals'
+        'player_bronze_medals',
 ];
 
     public function player() {
