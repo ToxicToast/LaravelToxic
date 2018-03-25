@@ -21,4 +21,12 @@ class RankedController extends Controller {
 				return $this->returnDefault(true);
 			}
 	}
+
+	private function returnDefault($error = true) {
+		if ($error) {
+				return abort(404);
+		} else {
+				return [];
+		}
+}
 }
