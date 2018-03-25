@@ -12,8 +12,7 @@ use App\Models\Overwatch\Trends;
 class RankedController extends Controller {
 
 	public function index() {
-		$model = Competitive::groupBy('player_id')
-			->orderBy('player_rank', 'DESC')
+		$model = Competitive::orderBy('player_rank', 'DESC')
 			->get();
 			if (!$model->isEmpty()) {
 				$collection = new RankedCollection($model);
