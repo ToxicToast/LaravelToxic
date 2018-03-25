@@ -153,6 +153,7 @@ return [
         //Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
+        Fadion\Maneuver\ManeuverServiceProvider::class,
 
         /*
          * Application Service Providers...

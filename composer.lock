@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "51be3da08cf45fad5268dc7223c19981",
+    "content-hash": "9a20840601c97864c306354859c90b71",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -57,6 +57,45 @@
                 "stack"
             ],
             "time": "2017-12-20T14:37:45+00:00"
+        },
+        {
+            "name": "banago/bridge",
+            "version": "v1.0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/banago/Bridge.git",
+                "reference": "81077125ddb426bfeb77ece29215bec0085df3f9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/banago/Bridge/zipball/81077125ddb426bfeb77ece29215bec0085df3f9",
+                "reference": "81077125ddb426bfeb77ece29215bec0085df3f9",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Banago\\Bridge\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL v3"
+            ],
+            "authors": [
+                {
+                    "name": "Baki Goxhaj",
+                    "email": "banago@gmail.com"
+                }
+            ],
+            "description": "A PHP class to transfer data using different protocols (sftp, ftp, http, etc). Utilizes PHPs ssh2, ftp and curl functions if available.",
+            "keywords": [
+                "banago",
+                "ftp",
+                "sftp",
+                "ssh"
+            ],
+            "time": "2015-02-23T19:23:49+00:00"
         },
         {
             "name": "barryvdh/laravel-cors",
@@ -488,6 +527,60 @@
             "time": "2017-11-14T20:44:03+00:00"
         },
         {
+            "name": "fadion/maneuver",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fadion/Maneuver.git",
+                "reference": "49343742fd110f4457ca9393623b1f59b4aa78b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fadion/Maneuver/zipball/49343742fd110f4457ca9393623b1f59b4aa78b6",
+                "reference": "49343742fd110f4457ca9393623b1f59b4aa78b6",
+                "shasum": ""
+            },
+            "require": {
+                "banago/bridge": "~1.0.8",
+                "illuminate/config": "5.*",
+                "illuminate/console": "5.*",
+                "illuminate/support": "5.*",
+                "jakeasmith/http_build_url": "~0.1.2",
+                "php": ">=5.5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Fadion\\Maneuver": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Baki Goxhaj",
+                    "email": "banago@gmail.com",
+                    "homepage": "http://www.wplancer.com"
+                },
+                {
+                    "name": "Fadion Dashi",
+                    "email": "jonidashi@gmail.com",
+                    "homepage": "http://www.streha.al"
+                }
+            ],
+            "description": "Easily deploy Laravel projects via FTP or SFTP, using Git for versioning.",
+            "keywords": [
+                "deployment",
+                "ftp",
+                "git",
+                "laravel",
+                "ssh"
+            ],
+            "time": "2017-12-08T14:33:48+00:00"
+        },
+        {
             "name": "fideloper/proxy",
             "version": "4.0.0",
             "source": {
@@ -764,6 +857,42 @@
                 "url"
             ],
             "time": "2017-03-20T17:10:46+00:00"
+        },
+        {
+            "name": "jakeasmith/http_build_url",
+            "version": "0.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jakeasmith/http_build_url.git",
+                "reference": "9d84710feab0f3d7c04c1e11dccef30ee350aad6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jakeasmith/http_build_url/zipball/9d84710feab0f3d7c04c1e11dccef30ee350aad6",
+                "reference": "9d84710feab0f3d7c04c1e11dccef30ee350aad6",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/http_build_url.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jake A. Smith",
+                    "email": "theman@jakeasmith.com"
+                }
+            ],
+            "description": "Provides functionality for http_build_url() to environments without pecl_http.",
+            "time": "2014-11-17T16:24:50+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
