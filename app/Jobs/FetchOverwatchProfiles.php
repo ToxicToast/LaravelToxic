@@ -41,8 +41,8 @@ class FetchOverwatchProfiles implements ShouldQueue
         $dataArray = [];
         //
         $data = $this->getApiData();
-        // $this->savePlayerOldRanking();
-        // $this->savePlayerRanking($data['stats']['competitive']['overall_stats']);
+        $this->savePlayerOldRanking();
+        $this->savePlayerRanking($data['stats']['competitive']['overall_stats']);
         $this->deletePlayerCharacterPlaytime();
         $this->savePlayerCharacterPlaytime($data['heroes']['playtime']['competitive']);
     }
