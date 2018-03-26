@@ -8,6 +8,8 @@ use App\Http\Resources\Overwatch\TrendsCollection;
 use App\Http\Resources\Overwatch\PlayerResource;
 use App\Http\Resources\Overwatch\PlaytimeCollection;
 
+use Carbon\Carbon;
+
 class RankedResource extends JsonResource
 {
     /**
@@ -33,8 +35,15 @@ class RankedResource extends JsonResource
             'nexttier'      => $this->calculateNextTier($this->player_rank),
             'player'        => new PlayerResource($this->player),
             'trends'        => new TrendsCollection($this->trends),
-            'playtime'      => $characters
+            'playtime'      => $characters,
+            'last_update'   => $this->setApiDate($this->updated_at)
         ];
+    }
+
+    private function setApiDate($date) {
+        $newDate = new Carbon($date);
+        $newDateString = $newDate->diffForHumans();
+        return $newDateString;
     }
 
     private function calculateLevel($prestige, $level) {
