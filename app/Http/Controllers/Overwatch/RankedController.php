@@ -30,7 +30,31 @@ class RankedController extends Controller {
 		}
 	}
 
+	public function profile($id) {
+		$cache = new Caching();
+		$cache->setPrefix('OVERWATCH_RANKED_PROFILE_' . $id);
+		if ($cache->hasData()) {
+			return $cache->getData();
+		} else {
+			$model = Competitive::orderBy('player_rank', 'DESC')->where('player_id', $id)
+			->get();
+			if (!$model->isEmpty()) {
+				$collection = new RankedCollection($model);
+				$cache->setData($collection);
+				return $collection;
+			} else {
+				return $this->returnDefault(false);
+			}
+		}
+	}
+
 	public function update($id) {
+			$cache = new Caching();
+			$cache->setPrefix('OVERWATCH_RANKED_PROFILE_' . $id);
+			$cache->removeData();
+			$cache->setPrefix('OVERWATCH_RANKED');
+			$cache->removeData();
+			//
 			$model = Player::OnlyActive()->where('id', $id)->first();
 			if ($this->canUpdateUser($model->updated_at) >= 12) {
 				$model->updated_at = Carbon::now();
