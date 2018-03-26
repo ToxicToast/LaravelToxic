@@ -67,6 +67,7 @@ Route::prefix('overwatch')->group(function () {
     // Route::get('/tracker/trendsold', 'OverwatchTrackerController@getTrackerTrendsData');
     //
     Route::get('/tracker/ranked', 'Overwatch\RankedController@index');
+    Route::get('/tracker/ranked/update/{id}', 'Overwatch\RankedController@update');
     Route::get('/tracker/statistics', 'Overwatch\StatisticsController@index');
     Route::get('/tracker/streamers', 'Overwatch\StreamersController@index');
     Route::get('/tracker/trends', 'Overwatch\TrendsController@index');

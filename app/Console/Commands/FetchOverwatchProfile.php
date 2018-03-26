@@ -42,10 +42,12 @@ class FetchOverwatchProfile extends Command
     {
         $user = $this->argument('user');
         $tag = $this->argument('tag');
+        $userId = $this->argument('userId');
         //
         $this->dispatch((new FetchOverwatchProfiles([
-            'user'  => $user,
-            'tag'   => $tag
+            'user'      => $user,
+            'tag'       => $tag,
+            'userId'    => $userId
         ]))->onQueue('overwatch_profiles'));
     }
 }

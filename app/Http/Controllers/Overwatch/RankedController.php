@@ -29,6 +29,18 @@ class RankedController extends Controller {
 		}
 	}
 
+	public function update($id) {
+			$model = Player::OnlyActive()->where('id', $id)->first();
+			//
+			$array = [
+				'user'	=> $model->name,
+				'tag'		=> $model->hashtag,
+				'userId'=> $model->id
+			];
+			//
+			\Artisan::call('overwatch:profiles', $array);
+	}
+
 	private function returnDefault($error = true) {
 		if ($error) {
 				return abort(404);
