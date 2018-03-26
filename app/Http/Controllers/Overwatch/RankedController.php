@@ -12,14 +12,21 @@ use App\Models\Overwatch\Trends;
 class RankedController extends Controller {
 
 	public function index() {
-		$model = Competitive::orderBy('player_rank', 'DESC')
+		$cache = new Caching();
+		$cache->setPrefix('OVERWATCH_RANKED');
+		if ($cache->hasData()) {
+			return $cache->getData();
+		} else {
+			$model = Competitive::orderBy('player_rank', 'DESC')
 			->get();
 			if (!$model->isEmpty()) {
 				$collection = new RankedCollection($model);
+				$cache->setData($collection);
 				return $collection;
 			} else {
 				return $this->returnDefault(false);
 			}
+		}
 	}
 
 	private function returnDefault($error = true) {

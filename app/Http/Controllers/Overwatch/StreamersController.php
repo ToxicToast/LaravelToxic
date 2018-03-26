@@ -3,16 +3,25 @@ namespace App\Http\Controllers\Overwatch;
 
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
+use App\Helper\Caching;
 
 class StreamersController extends Controller {
 
 	public function index() {
-		return [
-			[
-				'channel'	=> 'ToxicToast',
-				'stream'	=> $this->isStreamOnline('toxictoast')
-			],
-		];
+		$cache = new Caching();
+		$cache->setPrefix('OVERWATCH_STREAMERS');
+		if ($cache->hasData()) {
+			return $cache->getData();
+		} else {
+			$array = [
+				[
+					'channel'	=> 'ToxicToast',
+					'stream'	=> $this->isStreamOnline('toxictoast')
+				]
+			];
+			$cache->setData($array);
+			return $array;
+		}
 	}
 
 	private function isStreamOnline($channel = 'toxictoast') {
