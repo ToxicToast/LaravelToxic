@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use App\Jobs\FetchOverwatchProfiles;
 use App\Models\Overwatch\Player;
+use Carbon\Carbon;
 
 class CallOverwatchProfiles extends Command
 {
