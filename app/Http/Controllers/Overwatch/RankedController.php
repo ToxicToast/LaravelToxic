@@ -8,6 +8,7 @@ use App\Helper\Caching;
 use App\Models\Overwatch\Player;
 use App\Models\Overwatch\Competitive;
 use App\Models\Overwatch\Trends;
+use Carbon\Carbon;
 
 class RankedController extends Controller {
 
@@ -31,21 +32,33 @@ class RankedController extends Controller {
 
 	public function update($id) {
 			$model = Player::OnlyActive()->where('id', $id)->first();
-			//
-			$array = [
-				'user'	=> $model->name,
-				'tag'		=> $model->hashtag,
-				'userId'=> $model->id
-			];
-			//
-			\Artisan::call('overwatch:profiles', $array);
+			if ($this->canUpdateUser($model->updated_at) >= 12) {
+				$model->updated_at = Carbon::now();
+				$model->save();
+				$array = [
+					'user'	=> $model->name,
+					'tag'		=> $model->hashtag,
+					'userId'=> $model->id
+				];
+				\Artisan::call('overwatch:profiles', $array);
+			} else {
+				return $this->returnDefault(true);
+			}
 	}
 
 	private function returnDefault($error = true) {
-		if ($error) {
-				return abort(404);
-		} else {
-				return [];
-		}
-}
+			if ($error) {
+					return abort(404);
+			} else {
+					return [];
+			}
+	}
+
+	private function canUpdateUser($date) {
+		$now = Carbon::now();
+		$lastUpdated = Carbon::parse($date);
+		//
+		return $now->diffInHours($lastUpdated);
+	}
+
 }

@@ -57,6 +57,8 @@ class CallOverwatchProfiles extends Command
                 ]))->onQueue('overwatch_profiles'));
                 sleep(15);
                 $this->info('Fetching Data for ' . $user . ' finished.');
+                $player->updated_at = Carbon::now();
+			    $player->save();
             }
         }
     }
