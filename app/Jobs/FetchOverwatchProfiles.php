@@ -81,13 +81,13 @@ class FetchOverwatchProfiles implements ShouldQueue
             'player_prestige'       => $rankedData['prestige'],
             'player_tier'           => $rankedData['tier'],
             'player_avatar'         => $rankedData['avatar'],
-            'total'                 => isset($gameStats['games_played']),
-            'wins'                  => isset($gameStats['games_won']) ? intval($gameStats['games_won']) : 0,
-            'loses'                 => isset($gameStats['games_lost']) ? intval($gameStats['games_lost']) : $rankedData['losses'],
-            'ties'                  => isset($gameStats['games_tied']) ? intval($gameStats['games_tied']) : 0,
-            'player_gold_medals'    => isset($gameStats['medals_gold']) ? intval($gameStats['medals_gold']) : 0,
-            'player_silver_medals'  => isset($gameStats['medals_silver']) ? intval($gameStats['medals_silver']) : 0,
-            'player_bronze_medals'  => isset($gameStats['medals_bronze']) ? intval($gameStats['medals_bronze']) : 0,
+            'total'                 => $gameStats['games_played'],
+            'wins'                  => $gameStats['games_won'],
+            'loses'                 => $gameStats['games_lost'],
+            'ties'                  => $gameStats['games_tied'],
+            'player_gold_medals'    => $gameStats['medals_gold'],
+            'player_silver_medals'  => $gameStats['medals_silver'],
+            'player_bronze_medals'  => $gameStats['medals_bronze'],
         ];
         //
         Competitive::updateOrCreate([
