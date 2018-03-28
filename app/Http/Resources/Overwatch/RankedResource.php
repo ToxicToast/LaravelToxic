@@ -36,6 +36,11 @@ class RankedResource extends JsonResource
             'player'        => new PlayerResource($this->player),
             'trends'        => new TrendsCollection($this->trends),
             'playtime'      => $characters,
+            'medals'        => [
+                'gold'      => $this->player_gold_medals,
+                'silver'    => $this->player_silver_medals,
+                'bronze'    => $this->player_bronze_medals
+            ],
             'last_update'   => $this->setApiDate($this->updated_at)
         ];
     }
