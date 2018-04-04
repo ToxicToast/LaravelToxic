@@ -83,7 +83,7 @@ class FetchOverwatchProfiles implements ShouldQueue
             'player_avatar'         => $rankedData['avatar'],
             'total'                 => $gameStats['games_played'],
             'wins'                  => $gameStats['games_won'],
-            'loses'                 => $gameStats['games_lost'],
+            'loses'                 => (isset($gameStats['games_lost'])) ? $gameStats['games_lost'] : ($gameStats['games_played'] - $gameStats['games_won'] - $gameStats['games_tied']),
             'ties'                  => $gameStats['games_tied'],
             'player_gold_medals'    => $gameStats['medals_gold'],
             'player_silver_medals'  => $gameStats['medals_silver'],
